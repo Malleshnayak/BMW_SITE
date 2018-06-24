@@ -1,0 +1,14 @@
+[
+  {
+    "name":"BMW X5",
+    "image":"mx5.jpg"
+  },
+  {
+    "name":"BMW i8",
+    "image":"mi8.jpg"
+  },
+  {
+    "name":"BMW 8",
+    "image":"m8.jpg"
+  }
+]

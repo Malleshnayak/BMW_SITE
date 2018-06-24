@@ -1,0 +1,26 @@
+[
+  {
+    "name":"BMW Z3",
+    "image":"prz3.jpg"
+  },
+  {
+    "name":"BMW X2",
+    "image":"prx2.jpg"
+  },
+  {
+    "name":"BMW i3",
+    "image":"pri3.jpg"
+  },
+  {
+    "name":"BMW 5",
+    "image":"pr5.jpg"
+  },
+  {
+    "name":"BMW 7",
+    "image":"m7.jpg"
+  },
+  {
+    "name":"BMW X5",
+    "image":"prx5.jpg"
+  }
+]

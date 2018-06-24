@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title> BMW </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bmw1.css">
+  <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body class="container-fluid" style="padding-right:0px; padding-left:0px">
+  <nav class="navbar navbar-inverse container-fluid" style="margin-bottom:0px; padding-bottom: 5px">
+    <div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" ><img src="bmw.png"  margin="0"  width=auto height=85% style="position: absolute;left: 10px;top: 10px;" alt="..."></a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span></span><b><h3>Home</h3></b></a></li>
+          <li><a href="#"><span></span><b><h3 >My Items</h3  ></b></a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container-fluid" style="padding-right:0px; padding-left:0px; margin-top: 1px">
+      <ul class="nav nav-tabs nav-justified">
+          <li class="nav-item">
+              <a class="nav-link active" href="#pub" data-toggle="tab"> <h3 style="color:black; margin-right: 1px"><b>Public Items</b></h3> </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="#prv" data-toggle="tab"> <h3 style="color:black; margin-left: 1px "><b>Private Items</b></h3> </a>
+          </li>
+      </ul>
+
+      <div class="tab-content container-fluid">
+          <div class="tab-pane fade in active" id="pub">
+                  
+          </div>
+
+          <div class="tab-pane fade" id="prv">
+                          </div>
+    </div>
+  </div>
+
+
+  <div class="footer" style="background-color: #D3D3D3; margin-top:150px; margin-bottom: 0px">
+    <p>Copyright &copy; 2018 Mallesh</p>
+  </div>
+
+
+  <script>
+  $(document).ready(function(){
+    $.getJSON("private.json", function(json) {
+      var html="  <div class = 'row' align=center style='margin:20px 10px;'>";
+      counter=0;
+      json.forEach(function(data){
+        var name=data["name"];
+        var image=data["image"];
+        html += '<div class="col-sm-6 col-md-4">';
+        html += '          <div class="thumbnail">';
+        html += '              <img src="'+image+'" width=80% alt="...">';
+        html += '              <h4> <b>'+name+'</b> </h4>';
+        html += '          </div>';
+        html += '</div>';
+        counter=counter+1;
+        if(counter==6){
+          html += "</div><div class = 'row' align=center style='margin:20px 10px;'>";
+          counter=0;
+        }
+      });
+      html+="</div>";
+      console.log(html);
+      $("#prv").html(html);
+      //Now public data
+      $.getJSON("public.json",function(json){
+        var html='<div class = "row" align=center style="margin:20px 10px;">';
+        counter=0;
+        json.forEach(function(data){
+          var name=data["name"];
+          var image=data["image"];
+          html += '<div class="col-sm-6 col-md-4">';
+          html += '      <div class="thumbnail">';
+          html += '          <img src="'+image+'" width=80% alt="...">';
+          html += '          <h4><b>'+name+'</b> </h4>';
+          html += '            <div class="col-xs-6 top-border" style="background-color: #66b3ff"><a href="#"><h5 style="color: black"><b>Mark Pvt</b></h5></a></div><div class="col-xs-6 top-border" style="background-color: #1a1a1a"><a href="#"><h5 style="color: white"><b>Remove</b></h5></a></div>';
+          html += '          <div class="clearfix"></div>';
+          html += '      </div>';
+          html += '</div>';
+          counter=counter+1;
+          if(counter==6){
+            html += "</div><div class = 'row' align=center style='margin:20px 10px;'>";
+            counter=0;
+          }
+        });
+        html+="</div>";
+        $("#pub").html(html);
+      });
+    });
+  });
+  </script>
+</body>
+</html>
